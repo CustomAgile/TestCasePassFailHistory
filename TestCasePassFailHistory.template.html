@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Copyright (c) 2012 Rally Software Development Corp. All rights reserved -->
+<html>
+<head>
+  <title>Test Case Pass/Fail History</title>
+  <meta name="Name" content="App: Test Case Pass/Fail History" />
+  <meta name="Version" content="2012.11.22" />
+  <meta name="Vendor" content="Rally Software" />
+
+  <script type="text/javascript" src="/apps/1.32/sdk.js"></script>
+
+  <script type="text/javascript">
+    function onLoad() {
+      rally.sdk.ui.AppHeader.setHelpTopic("256");
+      rally.sdk.ui.AppHeader.showPageTools(true);
+        
+      var rallyDataSource = new rally.sdk.data.RallyDataSource('__WORKSPACE_OID__',
+                            '__PROJECT_OID__',
+                            '__PROJECT_SCOPING_UP__',
+                            '__PROJECT_SCOPING_DOWN__');
+
+      var appCustom = new TestCasePassFailHistory();
+      appCustom.runMainQuery(rallyDataSource);
+    }
+
+    rally.addOnLoad(onLoad);
+  </script>
+</head>
+
+<body>
+  <div id="spinner"></div>
+  <div id="TestCaseInfo"></div>
+</body>
+</html>
